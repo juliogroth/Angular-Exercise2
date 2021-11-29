@@ -1,0 +1,60 @@
+<div class="container">
+    <h1>Calculator</h1>
+    <form (ngSubmit)="onSubmit()" #calcForm="ngForm">
+        <div class="form-group">
+            <label for="name">First Number</label>
+            <input type="number" class="form-control" id="num1"
+                    required
+                    [(ngModel)]="model.num1" name="num1"
+                    #num1="ngModel">
+            <div [hidden]="num1.valid || num1.pristine"
+                class="alert alert-danger">
+                Number is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="operator">Calc Operator</label>
+            <select class="form-control" id="operator"
+                    required
+                    [(ngModel)]="model.operator" name="operator"
+                    #operator="ngModel">
+                <option *ngFor="let oper of operators" [value]="oper">{{oper}}</option>
+            </select>
+            <div [hidden]="operator.valid || operator.pristine" class="alert alert-danger">
+                Calc operator is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Second Number</label>
+            <input type="number" class="form-control" id="num2"
+                    required
+                    [(ngModel)]="model.num2" name="num2"
+                    #num2="ngModel">
+            <div [hidden]="num2.valid || num2.pristine"
+                class="alert alert-danger">
+                Number is required
+            </div>
+        </div>
+    
+        <button type="button" class="btn btn-default" 
+            (click)="newCalculator(model.num1,model.num2,operator.model); calcForm.reset() ">Calc!</button>
+
+    </form>
+    
+    
+    <div id=resultado>
+        Result:
+        <textarea>{{result}}</textarea>
+    </div>  
+    <hr>
+</div>
+
+
+
+     
+        
+    
+    
+        
